@@ -7,6 +7,7 @@ class Main {
 fun main() {
     configSave().createConfigFile()
     configSave().readConfigFile()
+    alertHandler().activateOnStartup()
     val updateChecker = Thread{
         while (true) {
         getIP().checkIPChange()
