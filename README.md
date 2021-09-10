@@ -6,7 +6,7 @@ It supports the the dydnsv2 protocol by dyndns.org.
 
 To configure it: 
 - Run the .jar file. The config file gets created automatically.
-- Open the config.porperties with some kind of editor (eg. Notepad) and type in your credentials
+- Open the config.properties with some kind of editor (eg. Notepad) and type in your credentials
                  
  Example: 
                                    
