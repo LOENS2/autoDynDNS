@@ -1,17 +1,22 @@
 package com.loens2.autoDynDNS
 
-import java.awt.SystemTray
-import java.awt.Toolkit
-import java.awt.TrayIcon
+import java.awt.*
+import java.awt.event.ActionListener
+import kotlin.system.exitProcess
 
 private val tray = SystemTray.getSystemTray()
 private val image = Toolkit.getDefaultToolkit().createImage({}.javaClass.getResource("/trayIcon.png"))
-private val trayIcon = TrayIcon(image, "DynDNS Updater")
+val popup = PopupMenu()
+private val trayIcon = TrayIcon(image, "DynDNS Updater", popup)
 
 class alertHandler {
 
     fun activateOnStartup() {
         trayIcon.isImageAutoSize = true
+        val al = ActionListener { exitProcess(0) }
+        val menuItem = MenuItem("Exit")
+        menuItem.addActionListener(al)
+        popup.add(menuItem)
         tray.add(trayIcon)
     }
 
