@@ -8,6 +8,7 @@ fun main() {
     configSave().createConfigFile()
     configSave().readConfigFile()
     alertHandler().activateOnStartup()
+    alertHandler().setSystemTrayInfo("Startup successful")
     val updateChecker = Thread{
         while (true) {
         getIP().checkIPChange()

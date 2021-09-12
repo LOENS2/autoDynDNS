@@ -21,6 +21,10 @@ class alertHandler {
     }
 
     fun setSystemTrayWarning(warning:String) {
-        trayIcon.displayMessage("DynDNS Updater", "Update failed", TrayIcon.MessageType.WARNING)
+        trayIcon.displayMessage("DynDNS Updater", warning, TrayIcon.MessageType.WARNING)
+    }
+
+    fun setSystemTrayInfo(info:String) {
+        trayIcon.displayMessage("DynDNS Updater", info, TrayIcon.MessageType.INFO)
     }
 }

@@ -20,11 +20,13 @@ class getIP {
     fun checkIPChange() {
         if (lastIPv4.isEmpty()) {
             lastIPv4 = getPublicIPv4()
+            setDynDNS().updateDynDNS(getPublicIPv4(),getPublicIPv6())
         } else if (getPublicIPv4() != lastIPv4) {
             setDynDNS().updateDynDNS(getPublicIPv4(),getPublicIPv6())
         }
         if (lastIPv6.isEmpty()) {
             lastIPv6 = getPublicIPv6()
+            setDynDNS().updateDynDNS(getPublicIPv4(),getPublicIPv6())
         } else if (getPublicIPv4() != lastIPv6) {
             setDynDNS().updateDynDNS(getPublicIPv4(),getPublicIPv6())
         }
