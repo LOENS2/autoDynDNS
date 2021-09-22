@@ -1,18 +1,17 @@
 package com.loens2.autoDynDNS
 
-class Main {
-
-}
 
 fun main() {
-    configSave().createConfigFile()
-    configSave().readConfigFile()
-    alertHandler().activateOnStartup()
-    alertHandler().setSystemTrayInfo("Startup successful")
+    createConfigFile()
+    readConfigFile()
+    activateOnStartup()
+    setSystemTrayInfo("Startup successful")
+    println("Startup successful")
     val updateChecker = Thread{
         while (true) {
-        getIP().checkIPChange()
-        Thread.sleep(600000)
+            println("Checking IP")
+            checkIPChange()
+            Thread.sleep(300000)
         }
     }
     updateChecker.join()
