@@ -14,6 +14,7 @@ fun main() {
             Thread.sleep(300000)
         }
     }
+    updateChecker.isDaemon = true
     updateChecker.join()
     updateChecker.start()
 }
