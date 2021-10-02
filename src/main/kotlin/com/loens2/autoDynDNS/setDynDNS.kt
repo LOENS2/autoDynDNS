@@ -9,11 +9,53 @@ import java.util.*
 
 
 fun updateDynDNS(IPv4: String, IPv6: String) {
-    val urlConnect = URL("$Server?hostname=$hostName&myip=$IPv4,$IPv6").openConnection()
-    val userPass = "$userName:$password"
-    val basicAuth = "Basic " + String(Base64.getEncoder().encode(userPass.toByteArray()))
-    urlConnect.setRequestProperty("Authorization", basicAuth)
-    val content = BufferedReader(InputStreamReader(urlConnect.getInputStream())).readText()
+    try {
+        val urlConnect = URL("$Server?hostname=$hostName&myip=$IPv4,$IPv6").openConnection()
+        val userPass = "$userName:$password"
+        val basicAuth = "Basic " + String(Base64.getEncoder().encode(userPass.toByteArray()))
+        urlConnect.setRequestProperty("Authorization", basicAuth)
+        val content = BufferedReader(InputStreamReader(urlConnect.getInputStream())).readText()
+
+        checkResult(content)
+    }
+    catch (e: Exception) {
+        println(e)
+    }
+}
+
+fun updateDynDNSIPv4(IPv4:String) {
+    try {
+        val urlConnect = URL("$Server?hostname=$hostName&myip=$IPv4").openConnection()
+        val userPass = "$userName:$password"
+        val basicAuth = "Basic " + String(Base64.getEncoder().encode(userPass.toByteArray()))
+        urlConnect.setRequestProperty("Authorization", basicAuth)
+        val content = BufferedReader(InputStreamReader(urlConnect.getInputStream())).readText()
+
+        checkResult(content)
+    }
+    catch (e: Exception) {
+        println(e)
+    }
+}
+
+fun updateDynDNSIPv6(IPv6: String) {
+    try {
+        val urlConnect = URL("$Server?hostname=$hostName&myip=$IPv6").openConnection()
+        val userPass = "$userName:$password"
+        val basicAuth = "Basic " + String(Base64.getEncoder().encode(userPass.toByteArray()))
+        urlConnect.setRequestProperty("Authorization", basicAuth)
+        val content = BufferedReader(InputStreamReader(urlConnect.getInputStream())).readText()
+
+        checkResult(content)
+    }
+    catch (e: Exception) {
+        println(e)
+    }
+}
+
+
+
+fun checkResult(content:String) {
     println(content)
 
     if (Regex("badauth").containsMatchIn(content)) {

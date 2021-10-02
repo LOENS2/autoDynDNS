@@ -10,6 +10,7 @@ var Server = ""
 var hostName = ""
 var userName = ""
 var password = ""
+var interval:Long = 0
 
     fun readConfigFile() {
         val configFile = File("./config.properties")
@@ -23,6 +24,7 @@ var password = ""
         hostName = config[3]
         userName = config[4]
         password = config[5]
+        interval = config[6].toLong()
         println("Loaded config")
     }
 
@@ -32,8 +34,8 @@ var password = ""
             configFile.createNewFile()
             println("Created file")
         }
-        if (configFile.length() < 50) {
-            configFile.writeText("IPv4Api=\nIPv6Api=\nServer=\nhostname=\nusername=\npassword=")
+        if (configFile.length() < 60) {
+            configFile.writeText("IPv4Api=\nIPv6Api=\nServer=\nhostname=\nusername=\npassword=\ninterval=")
             println("Wrote to file")
             exitProcess(0)
         }

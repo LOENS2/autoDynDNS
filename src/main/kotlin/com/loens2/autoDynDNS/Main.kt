@@ -11,7 +11,7 @@ fun main() {
         while (true) {
             println("Checking IP")
             checkIPChange()
-            Thread.sleep(300000)
+            Thread.sleep(interval*1000)
         }
     }
     updateChecker.isDaemon = true
