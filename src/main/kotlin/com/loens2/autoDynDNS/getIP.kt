@@ -30,8 +30,7 @@ fun getPublicIPv6():String {
 fun checkIPChange() {
     val publicIPv4 = getPublicIPv4()
     val publicIPv6 = getPublicIPv6()
-
-    if (publicIPv4.isEmpty() || publicIPv6.isEmpty())
+    
     if(lastIPv4 == publicIPv4 && lastIPv6 == publicIPv6) {
         println("Still up to date!")
         return
